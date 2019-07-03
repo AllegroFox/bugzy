@@ -147,12 +147,16 @@ const IterationViewTab = props => {
 
   const bugsByMeta = sortByMeta(props.metas, state.bugs);
 
-  return state.status === "loaded"
-    ? // ForEach meta....
-      Object.keys(bugsByMeta).map(id =>
-        renderBugList(bugsByMeta[id].meta, bugsByMeta[id].bugs)
-      )
-    : "Loading...";
+  return (
+    <React.Fragment>
+      {state.status === "loaded"
+        ? // ForEach meta....
+          Object.keys(bugsByMeta).map(id =>
+            renderBugList(bugsByMeta[id].meta, bugsByMeta[id].bugs)
+          )
+        : "Loading..."}
+    </React.Fragment>
+  );
 };
 
 export const IterationView: React.FunctionComponent<
